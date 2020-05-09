@@ -15,3 +15,8 @@ after_success:
   - docker build -t wojcikm/multi-react-nginx ./nginx
   - docker build -t wojcikm/multi-react-server ./server
   - docker build -t wojcikm/multi-react-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push wojcikm/multi-react-client
+  - docker push wojcikm/multi-react-nginx
+  - docker push wojcikm/multi-react-server
+  - docker push wojcikm/multi-react-worker
