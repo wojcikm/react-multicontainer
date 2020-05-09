@@ -5,7 +5,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t wojcikm/docker-react-multi -f ./client/Dockerfile.dev .
+  - docker build -t wojcikm/docker-react-multi -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true wojcikm/docker-react-multi npm run test -- --coverage
