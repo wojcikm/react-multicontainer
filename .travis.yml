@@ -9,3 +9,9 @@ before_install:
 
 script:
   - docker run -e CI=true wojcikm/docker-react-multi npm run test -- --coverage
+
+after_success:
+  - docker build -t wojcikm/multi-react-client ./client
+  - docker build -t wojcikm/multi-react-nginx ./nginx
+  - docker build -t wojcikm/multi-react-server ./server
+  - docker build -t wojcikm/multi-react-worker ./worker
