@@ -11,7 +11,6 @@
         {
             "name": "server",
             "image": "wujt/multi-react-server",
-            // renamed 'server' to 'api' in nginx config due to name sambiguity
             "hostname": "api",
             "essential": false,
             "memory": 128
@@ -19,10 +18,8 @@
         {
             "name": "nginx",
             "image": "wujt/multi-react-nginx",
-            // hence nobody is going to reach nginx, this field is optional
             "hostname": "nginx",
             "essential": true,
-            // unidirectional only:  nginx -> client   client !=> nginx
             "links": [
                 "client",
                 "server"
