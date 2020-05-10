@@ -20,3 +20,17 @@ after_success:
   - docker push wujt/multi-react-nginx
   - docker push wujt/multi-react-server
   - docker push wujt/multi-react-worker
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-516997148050
+  bucket_path: docker-multi
+  on:
+    branch: master
+  skip_cleanup: true
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
